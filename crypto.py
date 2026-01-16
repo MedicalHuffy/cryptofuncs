@@ -7,6 +7,21 @@ def gcd(a:int, b:int):
         (a,b) = (b, a%b)
     return a
 
+def gcdext(a:int, b:int):
+    # Extended Euclidean algorithm
+    (sold, snew) = (1,0)
+    (told, tnew) = (0,1)
+    while b != 0:
+        q = a // b
+        (a,b) = (b, a-q*b)
+        (sold, snew) = (snew, sold - q*snew)
+        (told, tnew) = (tnew, told - q*tnew)
+    return (sold, told)
+
+def modinv(a:int, p:int):
+    s,t = gcdext(a,p)
+    return s % p #take it mod p again just in case s is negative
+
 def legendre(a:int, p:int):
     # Legendre symbol via Euler's Criterion
     ls = pow(a, (p-1)//2, p)
