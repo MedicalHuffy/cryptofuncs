@@ -38,7 +38,7 @@ def modsqrt(a:int, p:int):
     z = 2
     while pow(z, (p-1)//2, p) == 1:
         z += 1
-        c = pow(z, Q, p)
+	c = pow(z, Q, p)
 
     #Step 3: Iterate
     R = pow(a, (Q+1)//2, p)
@@ -46,7 +46,7 @@ def modsqrt(a:int, p:int):
     # R^2 = a^(Q+1) = a*a^Q, we eventually want a^Q=1modp so R^2=amodp
 
     if t == 0: #handle the case if a is a nonresidue
-        return 0
+    	return 0
 
     while t != 1:
         # Find i so t^(2^i) = 1modp
